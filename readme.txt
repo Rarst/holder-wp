@@ -19,6 +19,8 @@ Example usage:
  - `Image [holder height="50" width="100" text="thumbnail"] in content`
  - `add_holder_theme( 'wordpress', 'd54e21', '464646' )`
 
+[Development repository and issue tracker](https://bitbucket.org/Rarst/holder/).
+
 == Changelog ==
 
 = 1.0 =
