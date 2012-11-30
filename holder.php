@@ -4,7 +4,7 @@ Plugin Name: Holder
 Plugin URI: http://wordpress.org/extend/plugins/holder/
 Description: Quick and flexible placeholders, created right in browser.
 Author: Andrey "Rarst" Savchenko
-Version: 1.0
+Version: 1.0.1
 Author URI: http://www.rarst.net/
 License: MIT
 
