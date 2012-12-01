@@ -27,8 +27,9 @@ function holder( $args = array(), $show = true ) {
  * @param string $background color in hex
  * @param string $foreground color in hex
  * @param int    $size       of font
+ * @param string $text       default for theme
  */
-function holder_add_theme( $name, $background, $foreground, $size = 12 ) {
+function holder_add_theme( $name, $background, $foreground, $size = 12, $text = '' ) {
 
-	R_Holder::add_theme( $name, $background, $foreground, $size );
+	R_Holder::add_theme( $name, $background, $foreground, $size, $text );
 }

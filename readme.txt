@@ -25,6 +25,7 @@ Example usage:
 
 = 1.0.2 =
 * _(docs)_ added Ivan Malopinsky account to contributors
+* _(enhancement)_ added default text support for custom themes
 
 = 1.0.1 =
 * _(docs)_ fixed wrong function name in examples

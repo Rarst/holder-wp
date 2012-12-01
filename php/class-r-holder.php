@@ -90,8 +90,9 @@ class R_Holder {
 	 * @param string $background color in hex
 	 * @param string $foreground color in hex
 	 * @param int    $size       of font
+	 * @param string $text       default for theme
 	 */
-	static function add_theme( $name, $background, $foreground, $size ) {
+	static function add_theme( $name, $background, $foreground, $size = 12, $text = '' ) {
 
 		static $enqueued = false;
 
@@ -101,7 +102,7 @@ class R_Holder {
 			$enqueued = true;
 		}
 
-		self::$themes[] = compact( 'name', 'background', 'foreground', 'size' );
+		self::$themes[] = compact( 'name', 'background', 'foreground', 'size', 'text' );
 	}
 
 	/**
@@ -118,6 +119,7 @@ class R_Holder {
       Holder.add_theme("<?php echo esc_js( $theme['name'] ) ?>", {
           background:"#<?php echo esc_js( trim( $theme['background'], '#' ) ) ?>",
           foreground:"#<?php echo esc_js( trim( $theme['foreground'], '#' ) ) ?>",
+					<?php if ( ! empty( $theme['text'] ) ) : ?>text:"<?php echo esc_js( $theme['text'] ); ?>",<?php endif; ?>
           size      :<?php echo (int) $theme['size']; ?>
       });
 			<?php endforeach; ?>
