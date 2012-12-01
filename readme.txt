@@ -1,5 +1,5 @@
 === Holder ===
-Contributors: Rarst
+Contributors: Rarst, imsky
 Tags: image, placeholder
 Requires at least: 3.4.2
 Tested up to: 3.4.2
@@ -22,6 +22,9 @@ Example usage:
 [Development repository and issue tracker](https://bitbucket.org/Rarst/holder/).
 
 == Changelog ==
+
+= 1.0.2 =
+* _(docs)_ added Ivan Malopinsky account to contributors
 
 = 1.0.1 =
 * _(docs)_ fixed wrong function name in examples
