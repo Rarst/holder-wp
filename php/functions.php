@@ -3,7 +3,7 @@
 /**
  * Display or retrieve Holder image.
  *
- * Args accept: width, height (pixels or percent), theme (name), background, foreground (hex colors), text.
+ * Args accept: width, height (pixels or percent), theme (name), background, foreground (hex colors), text, font family.
  *
  * @param array $args
  * @param bool  $show
@@ -28,8 +28,10 @@ function holder( $args = array(), $show = true ) {
  * @param string $foreground color in hex
  * @param int    $size       of font
  * @param string $text       default for theme
+ * @param string $font       font-family to use
  */
-function holder_add_theme( $name, $background, $foreground, $size = 12, $text = '' ) {
+function holder_add_theme( $name, $background, $foreground, $size = 12, $text = '', $font = '' ) {
 
-	R_Holder::add_theme( $name, $background, $foreground, $size, $text );
+	// TODO refactor into accepting array with backwards compat?
+	R_Holder::add_theme( $name, $background, $foreground, $size, $text, $font );
 }

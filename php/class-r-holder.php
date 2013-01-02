@@ -68,6 +68,9 @@ class R_Holder {
 		if( ! empty( $args['text'] ) )
 			$path .= '/text:' . $args['text'];
 
+		if( ! empty( $args['font'] ) )
+			$path .= '/font:' . $args['font'];
+
 		return '<img data-src="holder.js'. esc_attr( $path ) .'" />';
 	}
 
@@ -91,8 +94,9 @@ class R_Holder {
 	 * @param string $foreground color in hex
 	 * @param int    $size       of font
 	 * @param string $text       default for theme
+	 * @param string $font       font-family to use
 	 */
-	static function add_theme( $name, $background, $foreground, $size = 12, $text = '' ) {
+	static function add_theme( $name, $background, $foreground, $size = 12, $text = '', $font = '' ) {
 
 		static $enqueued = false;
 
@@ -102,7 +106,7 @@ class R_Holder {
 			$enqueued = true;
 		}
 
-		self::$themes[] = compact( 'name', 'background', 'foreground', 'size', 'text' );
+		self::$themes[] = compact( 'name', 'background', 'foreground', 'size', 'text', 'font' );
 	}
 
 	/**
@@ -120,6 +124,7 @@ class R_Holder {
           background:"#<?php echo esc_js( trim( $theme['background'], '#' ) ) ?>",
           foreground:"#<?php echo esc_js( trim( $theme['foreground'], '#' ) ) ?>",
 					<?php if ( ! empty( $theme['text'] ) ) : ?>text:"<?php echo esc_js( $theme['text'] ); ?>",<?php endif; ?>
+					<?php if ( ! empty( $theme['font'] ) ) : ?>font:"<?php echo esc_js( $theme['font'] ); ?>",<?php endif; ?>
           size      :<?php echo (int) $theme['size']; ?>
       });
 			<?php endforeach; ?>
