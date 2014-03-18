@@ -32,4 +32,4 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 	require __DIR__ . '/vendor/autoload.php';
 }
 
-R_Holder::on_load();
+Rarst\Holder\Plugin::on_load();
