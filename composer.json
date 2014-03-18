@@ -1,0 +1,26 @@
+{
+	"name"       : "rarst/holder",
+	"description": "Quick and flexible placeholders, created right in browser.",
+	"keywords"   : ["wordpress"],
+	"type"       : "wordpress-plugin",
+	"homepage"   : "https://github.com/Rarst/holder-wp",
+	"license"    : "MIT",
+	"authors"    : [
+		{
+			"name"    : "Andrey Savchenko",
+			"email"   : "contact@rarst.net",
+			"homepage": "http://www.Rarst.net/"
+		}
+	],
+	"support"    : {
+		"issues": "https://github.com/Rarst/holder-wp/issues"
+	},
+	"require"    : {
+		"composer/installers": "~1.0",
+		"imsky/holder"       : "~2.3"
+	},
+	"autoload"   : {
+		"classmap": ["php"],
+		"files"   : ["php/functions.php"]
+	}
+}
