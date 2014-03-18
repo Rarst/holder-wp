@@ -29,7 +29,8 @@ DEALINGS IN THE SOFTWARE.
 Uses holder.js library by Ivan Malopinsky under Apache 2.0 License.
 */
 
-require dirname( __FILE__ ) . '/php/class-r-holder.php';
-require dirname( __FILE__ ) . '/php/functions.php';
+if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+	require __DIR__ . '/vendor/autoload.php';
+}
 
 R_Holder::on_load();
