@@ -62,16 +62,19 @@ class Plugin {
 		$args = wp_parse_args( $args, self::$default_arguments );
 		$path = '/' . $args['width'] . 'x' . $args['height'];
 
-		if( ! empty( $args['theme'] ) )
+		if ( ! empty( $args['theme'] ) ) {
 			$path .= '/' . $args['theme'];
-		elseif ( ! empty( $args['background'] ) && ! empty( $args['foreground'] ) )
+		} elseif ( ! empty( $args['background'] ) && ! empty( $args['foreground'] ) ) {
 			$path .= '/#' . trim( $args['background'], '#' ) . ':#' . trim( $args['foreground'], '#' );
+		}
 
-		if( ! empty( $args['text'] ) )
+		if ( ! empty( $args['text'] ) ) {
 			$path .= '/text:' . $args['text'];
+		}
 
-		if( ! empty( $args['font'] ) )
+		if ( ! empty( $args['font'] ) ) {
 			$path .= '/font:' . $args['font'];
+		}
 
 		return '<img data-src="holder.js'. esc_attr( $path ) .'" />';
 	}
