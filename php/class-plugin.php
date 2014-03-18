@@ -43,7 +43,7 @@ class Plugin {
 
 		if ( ! $enqueued ) {
 
-			wp_enqueue_script( 'holder', plugins_url( '/js/holder.js', dirname( __FILE__ ) ), array(), 1.7, true );
+			wp_enqueue_script( 'holder', plugins_url( '/components/holder/holder.js', __DIR__ ), array(), 2.3, true );
 			$enqueued = true;
 		}
 	}
