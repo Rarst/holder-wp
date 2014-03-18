@@ -111,6 +111,9 @@ class Plugin {
 			$enqueued = true;
 		}
 
+		$background = trim( $background, '#' );
+		$foreground = trim( $foreground, '#' );
+
 		self::$themes[] = compact( 'name', 'background', 'foreground', 'size', 'text', 'font' );
 	}
 
@@ -124,14 +127,14 @@ class Plugin {
 
 		?>
   <script type=text/javascript>
-			<?php foreach ( self::$themes as $theme ) : ?>
-      Holder.add_theme("<?php echo esc_js( $theme['name'] ) ?>", {
-          background:"#<?php echo esc_js( trim( $theme['background'], '#' ) ) ?>",
-          foreground:"#<?php echo esc_js( trim( $theme['foreground'], '#' ) ) ?>",
-					<?php if ( ! empty( $theme['text'] ) ) : ?>text:"<?php echo esc_js( $theme['text'] ); ?>",<?php endif; ?>
-					<?php if ( ! empty( $theme['font'] ) ) : ?>font:"<?php echo esc_js( $theme['font'] ); ?>",<?php endif; ?>
-          size      :<?php echo (int) $theme['size']; ?>
-      });
+			<?php foreach ( self::$themes as $theme ) : $theme = (object) array_map( 'esc_js', $theme ); ?>
+			Holder.add_theme("<?= $theme->name ?>", {
+				background: "#<?= $theme->background ?>",
+				foreground: "#<?= $theme->foreground ?>",
+				<?= empty( $theme->text ) ? '' : "text: {$theme->text}," ?>
+				<?= empty( $theme->font ) ? '' : "font: {$theme->font}," ?>
+				size      :<?= $theme->size ?>
+			});
 			<?php endforeach; ?>
   </script>
 		<?php
