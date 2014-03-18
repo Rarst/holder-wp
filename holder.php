@@ -1,10 +1,9 @@
 <?php
 /*
 Plugin Name: Holder
-Plugin URI: http://wordpress.org/extend/plugins/holder/
+Plugin URI: https://github.com/Rarst/holder-wp
 Description: Quick and flexible placeholders, created right in browser.
 Author: Andrey "Rarst" Savchenko
-Version: 1.1
 Author URI: http://www.rarst.net/
 License: MIT
 
@@ -26,7 +25,7 @@ FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TOR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
-Uses holder.js library by Ivan Malopinsky under Apache 2.0 License.
+Uses holder.js library by Ivan Malopinsky under MIT License.
 */
 
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
