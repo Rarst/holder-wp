@@ -59,21 +59,23 @@ class Plugin {
 
 		$this->enqueue();
 
-		$args = wp_parse_args( $args, $this->default_arguments );
-		$path = '/' . $args['width'] . 'x' . $args['height'];
+		$args = (object) wp_parse_args( $args, $this->default_arguments );
+		$path = "/{$args->width}x{$args->height}";
 
-		if ( ! empty( $args['theme'] ) ) {
-			$path .= '/' . $args['theme'];
-		} elseif ( ! empty( $args['background'] ) && ! empty( $args['foreground'] ) ) {
-			$path .= '/#' . trim( $args['background'], '#' ) . ':#' . trim( $args['foreground'], '#' );
+		if ( ! empty( $args->theme ) ) {
+			$path .= '/' . $args->theme;
+		} elseif ( ! empty( $args->background ) && ! empty( $args->foreground ) ) {
+			$args->background = trim( $args->background, '#' );
+			$args->foreground = trim( $args->foreground, '#' );
+			$path .= "/#{$args->background}:#{$args->foreground}";
 		}
 
-		if ( ! empty( $args['text'] ) ) {
-			$path .= '/text:' . $args['text'];
+		if ( ! empty( $args->text ) ) {
+			$path .= "/text:{$args->text}";
 		}
 
-		if ( ! empty( $args['font'] ) ) {
-			$path .= '/font:' . $args['font'];
+		if ( ! empty( $args->font ) ) {
+			$path .= "/font:{$args->font}";
 		}
 
 		return '<img data-src="holder.js'. esc_attr( $path ) .'" />';
