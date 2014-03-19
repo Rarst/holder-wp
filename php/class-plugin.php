@@ -7,6 +7,8 @@ namespace Rarst\Holder;
  */
 class Plugin {
 
+	public $components_url;
+
 	public $themes = array();
 
 	public $default_arguments = array(
@@ -22,6 +24,8 @@ class Plugin {
 	 * Plugin load.
 	 */
 	public function on_load() {
+
+		$this->components_url = plugins_url( '/components', __DIR__ );
 
 		add_action( 'init', array( $this, 'init' ) );
 	}
@@ -43,7 +47,7 @@ class Plugin {
 
 		if ( ! $enqueued ) {
 
-			wp_enqueue_script( 'holder', plugins_url( '/components/holder/holder.js', __DIR__ ), array(), 2.3, true );
+			wp_enqueue_script( 'holder', $this->components_url . '/holder/holder.js', array(), 2.3, true );
 			$enqueued = true;
 		}
 	}
