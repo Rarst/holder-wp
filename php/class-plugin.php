@@ -12,7 +12,7 @@ class Plugin {
 	public $default_arguments = array(
 		'width'      => '100%', // integer for pixels or integer with percent sign for fluid
 		'height'     => '100%', // integer for pixels or integer with percent sign for fluid
-		'theme'      => false,  // gray | industrial | social or custom
+		'theme'      => false,  // sky | vine | lava | gray | industrial | social or custom
 		'background' => false,  // hex color code
 		'foreground' => false,  // hex color code
 		'text'       => false,
