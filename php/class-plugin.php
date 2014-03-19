@@ -111,10 +111,10 @@ class Plugin {
 			$enqueued = true;
 		}
 
-		$background = trim( $background, '#' );
-		$foreground = trim( $foreground, '#' );
+		$background = '#' . trim( $background, '#' );
+		$foreground = '#' . trim( $foreground, '#' );
 
-		self::$themes[] = compact( 'name', 'background', 'foreground', 'size', 'text', 'font' );
+		self::$themes[$name] = compact( 'background', 'foreground', 'size', 'text', 'font' );
 	}
 
 	/**
@@ -126,17 +126,11 @@ class Plugin {
 			return;
 
 		?>
-  <script type=text/javascript>
-			<?php foreach ( self::$themes as $theme ) : $theme = (object) array_map( 'esc_js', $theme ); ?>
-			Holder.add_theme("<?= $theme->name ?>", {
-				background: "#<?= $theme->background ?>",
-				foreground: "#<?= $theme->foreground ?>",
-				<?= empty( $theme->text ) ? '' : "text: {$theme->text}," ?>
-				<?= empty( $theme->font ) ? '' : "font: {$theme->font}," ?>
-				size      :<?= $theme->size ?>
-			});
+		<script type=text/javascript>
+			<?php foreach ( self::$themes as $name => $theme ) : $theme = json_encode( array_filter( $theme ) ); ?>
+			Holder.add_theme("<?= esc_js( $name ) ?>", <?= $theme ?>);
 			<?php endforeach; ?>
-  </script>
+		</script>
 		<?php
 	}
 }
