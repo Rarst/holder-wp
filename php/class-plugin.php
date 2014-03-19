@@ -7,9 +7,9 @@ namespace Rarst\Holder;
  */
 class Plugin {
 
-	static $themes = array();
+	public $themes = array();
 
-	static $default_arguments = array(
+	public $default_arguments = array(
 		'width'      => '100%', // integer for pixels or integer with percent sign for fluid
 		'height'     => '100%', // integer for pixels or integer with percent sign for fluid
 		'theme'      => false,  // gray | industrial | social or custom
@@ -21,23 +21,23 @@ class Plugin {
 	/**
 	 * Plugin load.
 	 */
-	static function on_load() {
+	public function on_load() {
 
-		add_action( 'init', array( __CLASS__, 'init' ) );
+		add_action( 'init', array( $this, 'init' ) );
 	}
 
 	/**
 	 * Register shortcode.
 	 */
-	static function init() {
+	public function init() {
 
-		add_shortcode( 'holder', array( __CLASS__, 'shortcode' ) );
+		add_shortcode( 'holder', array( $this, 'shortcode' ) );
 	}
 
 	/**
 	 * Enqueue script if not done yet.
 	 */
-	static function enqueue() {
+	public function enqueue() {
 
 		static $enqueued = false;
 
@@ -55,11 +55,11 @@ class Plugin {
 	 *
 	 * @return string
 	 */
-	static function get_img( $args = array() ) {
+	public function get_img( $args = array() ) {
 
-		self::enqueue();
+		$this->enqueue();
 
-		$args = wp_parse_args( $args, self::$default_arguments );
+		$args = wp_parse_args( $args, $this->default_arguments );
 		$path = '/' . $args['width'] . 'x' . $args['height'];
 
 		if ( ! empty( $args['theme'] ) ) {
@@ -86,9 +86,9 @@ class Plugin {
 	 *
 	 * @return string
 	 */
-	static function shortcode( $args ) {
+	public function shortcode( $args ) {
 
-		return self::get_img( shortcode_atts( self::$default_arguments, $args ) );
+		return $this->get_img( shortcode_atts( $this->default_arguments, $args ) );
 	}
 
 	/**
@@ -101,33 +101,33 @@ class Plugin {
 	 * @param string $text       default for theme
 	 * @param string $font       font-family to use
 	 */
-	static function add_theme( $name, $background, $foreground, $size = 12, $text = '', $font = '' ) {
+	public function add_theme( $name, $background, $foreground, $size = 12, $text = '', $font = '' ) {
 
 		static $enqueued = false;
 
 		if ( ! $enqueued ) {
 
-			add_action( 'wp_print_footer_scripts', array( __CLASS__, 'wp_print_footer_scripts' ), 11 );
+			add_action( 'wp_print_footer_scripts', array( $this, 'wp_print_footer_scripts' ), 11 );
 			$enqueued = true;
 		}
 
 		$background = '#' . trim( $background, '#' );
 		$foreground = '#' . trim( $foreground, '#' );
 
-		self::$themes[$name] = compact( 'background', 'foreground', 'size', 'text', 'font' );
+		$this->themes[$name] = compact( 'background', 'foreground', 'size', 'text', 'font' );
 	}
 
 	/**
 	 * Output code for custom themes if needed.
 	 */
-	static function wp_print_footer_scripts() {
+	public function wp_print_footer_scripts() {
 
-		if ( empty( self::$themes ) || ! wp_script_is( 'holder', 'done' ) )
+		if ( empty( $this->themes ) || ! wp_script_is( 'holder', 'done' ) )
 			return;
 
 		?>
 		<script type=text/javascript>
-			<?php foreach ( self::$themes as $name => $theme ) : $theme = json_encode( array_filter( $theme ) ); ?>
+			<?php foreach ( $this->themes as $name => $theme ) : $theme = json_encode( array_filter( $theme ) ); ?>
 			Holder.add_theme("<?= esc_js( $name ) ?>", <?= $theme ?>);
 			<?php endforeach; ?>
 		</script>

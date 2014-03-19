@@ -12,7 +12,9 @@
  */
 function holder( $args = array(), $show = true ) {
 
-	$img = Rarst\Holder\Plugin::get_img( $args );
+	global $holder;
+
+	$img = $holder->get_img( $args );
 
 	if( $show )
 		echo $img;
@@ -32,6 +34,8 @@ function holder( $args = array(), $show = true ) {
  */
 function holder_add_theme( $name, $background, $foreground, $size = 12, $text = '', $font = '' ) {
 
+	global $holder;
+
 	// TODO refactor into accepting array with backwards compat?
-	Rarst\Holder\Plugin::add_theme( $name, $background, $foreground, $size, $text, $font );
+	$holder->add_theme( $name, $background, $foreground, $size, $text, $font );
 }
