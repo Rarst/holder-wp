@@ -18,6 +18,14 @@ Image [holder height="50" width="100" text="thumbnail"] in content
 holder_add_theme( 'wordpress', 'd54e21', '464646' );
 ```
 
+# Installation
+
+Plugin is a [Composer](https://getcomposer.org/) package and can be installed via:
+
+```
+composer create-project rarst/holder --no-dev
+```
+
 ## Changelog
 
 ### 1.1
