@@ -28,6 +28,12 @@ composer create-project rarst/holder --no-dev
 
 ## Changelog
 
+### 2.0
+
+ - Composer package and autoload
+ - class renamed and namespaced
+ - general cleanup and rewrite
+
 ### 1.1
 
  - _(dependency update)_ holder.js v1.8
