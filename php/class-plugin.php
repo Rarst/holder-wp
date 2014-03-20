@@ -134,7 +134,7 @@ class Plugin {
 		?>
 		<script type=text/javascript>
 			<?php foreach ( $this->themes as $name => $theme ) : $theme = json_encode( array_filter( $theme ) ); ?>
-			Holder.add_theme("<?= esc_js( $name ) ?>", <?= $theme ?>);
+			Holder.add_theme("<?php echo esc_js( $name ) ?>", <?php echo $theme ?>);
 			<?php endforeach; ?>
 		</script>
 		<?php
