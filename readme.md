@@ -1,4 +1,4 @@
-# Description
+# Holder image placeholders for WordPress 
 
 This is WordPress plugin for convenient use of [holder.js](http://imsky.github.com/holder/) library by [Ivan Malopinsky](http://imsky.co/).
 
