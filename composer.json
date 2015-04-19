@@ -17,7 +17,7 @@
 	},
 	"require"    : {
 		"composer/installers": "~1.0",
-		"imsky/holder"       : "~2.3"
+		"imsky/holder"       : "~2.6"
 	},
 	"autoload"   : {
 		"classmap": ["php"],
