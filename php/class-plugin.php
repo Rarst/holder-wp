@@ -82,7 +82,7 @@ class Plugin {
 			$path .= "/font:{$args->font}";
 		}
 
-		return '<img data-src="holder.js'. esc_attr( $path ) .'" />';
+		return '<img data-src="holder.js' . esc_attr( $path ) . '" />';
 	}
 
 	/**
@@ -120,7 +120,7 @@ class Plugin {
 		$background = '#' . trim( $background, '#' );
 		$foreground = '#' . trim( $foreground, '#' );
 
-		$this->themes[$name] = compact( 'background', 'foreground', 'size', 'text', 'font' );
+		$this->themes[ $name ] = compact( 'background', 'foreground', 'size', 'text', 'font' );
 	}
 
 	/**
@@ -128,8 +128,9 @@ class Plugin {
 	 */
 	public function wp_print_footer_scripts() {
 
-		if ( empty( $this->themes ) || ! wp_script_is( 'holder', 'done' ) )
+		if ( empty( $this->themes ) || ! wp_script_is( 'holder', 'done' ) ) {
 			return;
+		}
 
 		?>
 		<script type=text/javascript>
@@ -137,6 +138,6 @@ class Plugin {
 			Holder.addTheme( "<?php echo esc_js( $name ) ?>", <?php echo $theme ?> );
 			<?php endforeach; ?>
 		</script>
-		<?php
+	<?php
 	}
 }

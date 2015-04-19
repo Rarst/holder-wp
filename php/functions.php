@@ -16,8 +16,9 @@ function holder( $args = array(), $show = true ) {
 
 	$img = $holder->get_img( $args );
 
-	if( $show )
+	if ( $show ) {
 		echo $img;
+	}
 
 	return $img;
 }
